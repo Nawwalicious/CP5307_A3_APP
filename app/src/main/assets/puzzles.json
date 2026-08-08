@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "levels": [
+    {
+      "level": 1,
+      "name": "Warm up",
+      "puzzles": [
+        { "image": "level01_pic01.png", "answer": 0 },
+        { "image": "level01_pic02.png", "answer": 25 },
+        { "image": "level01_pic03.png", "answer": 20 },
+        { "image": "level01_pic04.jpg", "answer": 55 },
+        { "image": "level01_pic05.jpg", "answer": 6 },
+        { "image": "level01_pic06.png", "answer": 0 }
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Getting tricky",
+      "puzzles": [
+        { "image": "level02_pic01.jpg", "answer": 15 },
+        { "image": "level02_pic02.jpg", "answer": 26 },
+        { "image": "level02_pic03.jpg", "answer": 4 },
+        { "image": "level02_pic04.jpg", "answer": 2 },
+        { "image": "level02_pic05.jpg", "answer": 55 },
+        { "image": "level02_pic06.jpg", "answer": 63 }
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Brain melter",
+      "puzzles": [
+        { "image": "level03_pic01.jpg", "answer": 27 },
+        { "image": "level03_pic02.jpg", "answer": 4 },
+        { "image": "level03_pic03.jpg", "answer": 5 },
+        { "image": "level03_pic04.jpg", "answer": 1 },
+        { "image": "level03_pic05.jpg", "answer": 25 },
+        { "image": "level03_pic06.jpg", "answer": 4 }
+      ]
+    }
+  ]
+}
