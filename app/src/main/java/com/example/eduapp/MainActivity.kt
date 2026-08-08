@@ -9,15 +9,17 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.eduapp.screen.GameScreen
 import com.example.eduapp.screen.LandingScreen
+import com.example.eduapp.screen.LevelScreen
+import com.example.eduapp.screen.PlayerScreen
 import com.example.eduapp.screen.ScoreScreen
 import com.example.eduapp.screen.SettingScreen
-import com.example.eduapp.screen.TestDBScreen
 import com.example.eduapp.ui.theme.EduAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,25 +34,45 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/** Navigation graph. Player name and level are passed as route arguments. */
 @Composable
-fun AppNav(currentContext: Context){
-    //obtain navController
+fun AppNav(currentContext: Context) {
     val navController = rememberNavController()
-    //set navHost and the routes
+
     NavHost(navController = navController, startDestination = "landing") {
+
         composable("landing") { LandingScreen(navController) }
-        composable("setting") { SettingScreen(navController) }
-        composable("game") { GameScreen(currentContext, navController) }
-        composable("score") { ScoreScreen(navController) }
-        composable("testDB") { TestDBScreen(currentContext) }
-    }
 
-}
+        composable("players") { PlayerScreen(currentContext, navController) }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EduAppTheme {
+        composable(
+            route = "levels/{player}",
+            arguments = listOf(navArgument("player") { type = NavType.StringType })
+        ) { backStackEntry ->
+            LevelScreen(
+                navController = navController,
+                playerName = backStackEntry.arguments?.getString("player").orEmpty()
+            )
+        }
 
+        composable(
+            route = "game/{player}/{level}",
+            arguments = listOf(
+                navArgument("player") { type = NavType.StringType },
+                navArgument("level") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            GameScreen(
+                currentContext = currentContext,
+                navController = navController,
+                playerName = backStackEntry.arguments?.getString("player").orEmpty(),
+                level = backStackEntry.arguments?.getInt("level") ?: 1
+            )
+        }
+
+        composable("scores") { ScoreScreen(currentContext, navController) }
+
+        composable("setting") { SettingScreen(currentContext, navController) }
     }
 }
