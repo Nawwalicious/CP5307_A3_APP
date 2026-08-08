@@ -59,8 +59,8 @@ passed as typed route arguments.
 
 Room, two tables:
 
-- `players` — `id`, `name`, `createdAt`. Capped at three.
-- `users` — `id`, `username`, `level`, `score`, `duration`, `date`. Capped at ten.
+- `players` - `id`, `name`, `createdAt`. Capped at three.
+- `users` - `id`, `username`, `level`, `score`, `duration`, `date`. Capped at ten.
 
 ## Networking
 
@@ -76,9 +76,9 @@ repository's path.
 
 Non-GUI unit tests in `app/src/test/java/com/example/eduapp/`:
 
-- `GameRulesTest` — name validation (length, allowed characters, duplicates,
+- `GameRulesTest` - name validation (length, allowed characters, duplicates,
   trimming) and the three-slot limit.
-- `OptionGeneratorTest` — always four options, always contains the correct
+- `OptionGeneratorTest` - always four options, always contains the correct
   answer, never duplicates, never negative, deterministic for a given seed.
 
 Run with `./gradlew test`, or right-click the `test` source folder in Android
